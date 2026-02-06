@@ -33,10 +33,10 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-20 px-5 bg-white">
+    <section className="py-20 px-5 bg-bg">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-display text-3xl sm:text-4xl text-dark mb-3">
+          <h2 className="font-semibold text-3xl sm:text-4xl text-dark mb-3">
             Todo lo que necesita tu consultorio
           </h2>
           <p className="text-gray text-lg max-w-lg mx-auto">
@@ -47,7 +47,7 @@ export default function Features() {
           {features.map((f, i) => (
             <div
               key={i}
-              className="bg-gray-light/50 rounded-[--radius-card] p-6 border border-gray-light/50 hover:border-primary/20 hover:shadow-md transition-all"
+              className="bg-white rounded-[--radius-card] p-6 border border-border hover:border-primary/30 hover:shadow-md transition-all"
             >
               <span className="text-3xl block mb-3">{f.icon}</span>
               <p className="font-bold text-dark text-[15px] mb-1">{f.title}</p>

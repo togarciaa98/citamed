@@ -65,6 +65,37 @@ export const QRIcon = (p) => (
   <Icon d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM17 14h4v3h-4zM14 17h3v4h-3zM17 20h4v1h-4z" {...p} />
 );
 
+export const BellIcon = (p) => (
+  <Icon d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" {...p} />
+);
+export const ChevronDownIcon = (p) => (
+  <Icon d="M6 9l6 6 6-6" {...p} />
+);
+export const ChevronLeftIcon = (p) => (
+  <Icon d="M15 18l-6-6 6-6" {...p} />
+);
+export const ChevronRightIcon = (p) => (
+  <Icon d="M9 18l6-6-6-6" {...p} />
+);
+export const BarChartIcon = (p) => (
+  <Icon d="M12 20V10M18 20V4M6 20v-4" {...p} />
+);
+export const MapPinIcon = (p) => (
+  <Icon d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0zM12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" {...p} />
+);
+export const DownloadIcon = (p) => (
+  <Icon d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" {...p} />
+);
+export const ListIcon = (p) => (
+  <Icon d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" {...p} />
+);
+export const GridIcon = (p) => (
+  <Icon d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" {...p} />
+);
+export const EditIcon = (p) => (
+  <Icon d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" {...p} />
+);
+
 export const WhatsAppIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}

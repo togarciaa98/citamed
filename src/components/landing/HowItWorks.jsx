@@ -21,7 +21,7 @@ export default function HowItWorks() {
     <section className="py-20 px-5 bg-primary-pale/50">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-display text-3xl sm:text-4xl text-dark mb-3">
+          <h2 className="font-semibold text-3xl sm:text-4xl text-dark mb-3">
             Así de fácil funciona
           </h2>
           <p className="text-gray text-lg">En 3 simples pasos</p>
@@ -32,7 +32,7 @@ export default function HowItWorks() {
               <div className="w-14 h-14 rounded-full bg-primary text-white text-xl font-bold flex items-center justify-center mx-auto mb-4">
                 {s.num}
               </div>
-              <h3 className="font-display text-lg text-dark mb-2">
+              <h3 className="font-semibold text-lg text-dark mb-2">
                 {s.title}
               </h3>
               <p className="text-gray text-sm leading-relaxed">{s.desc}</p>

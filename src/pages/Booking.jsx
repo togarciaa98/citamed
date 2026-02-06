@@ -8,6 +8,7 @@ import DateStep from "@/components/booking/DateStep";
 import TimeStep from "@/components/booking/TimeStep";
 import PatientInfoStep from "@/components/booking/PatientInfoStep";
 import BookingSuccess from "@/components/booking/BookingSuccess";
+import { Skeleton, SkeletonLine } from "@/components/ui/Skeleton";
 import { BRAND } from "@/lib/constants";
 import toast from "react-hot-toast";
 
@@ -37,10 +38,24 @@ export default function Booking() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-pale to-[#f0fffe] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray text-sm">Cargando...</p>
+      <div className="min-h-screen bg-bg">
+        {/* Header skeleton */}
+        <div className="bg-white border-b border-border px-5 pt-8 pb-6">
+          <div className="max-w-lg mx-auto flex flex-col items-center">
+            <Skeleton className="w-16 h-16 rounded-full" />
+            <SkeletonLine className="h-5 w-40 mt-4" />
+            <SkeletonLine className="h-4 w-28 mt-2" />
+            <SkeletonLine className="h-3 w-52 mt-2" />
+          </div>
+        </div>
+        {/* Content skeleton */}
+        <div className="max-w-lg mx-auto px-5 pt-6">
+          <SkeletonLine className="h-1.5 w-full rounded-full mb-6" />
+          <div className="space-y-3">
+            <Skeleton className="h-20 w-full rounded-[--radius-card]" />
+            <Skeleton className="h-20 w-full rounded-[--radius-card]" />
+            <Skeleton className="h-20 w-full rounded-[--radius-card]" />
+          </div>
         </div>
       </div>
     );
@@ -48,20 +63,22 @@ export default function Booking() {
 
   if (error || !doctor) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-pale to-[#f0fffe] flex items-center justify-center p-5">
-        <div className="bg-white rounded-[--radius-card] p-8 text-center max-w-md shadow-lg">
-          <p className="text-5xl mb-4">🔍</p>
-          <h2 className="font-display text-xl text-dark mb-2">
+      <div className="min-h-screen bg-bg flex items-center justify-center p-5">
+        <div className="bg-white rounded-[--radius-card] p-8 text-center max-w-md shadow-sm border border-border">
+          <div className="w-14 h-14 rounded-full bg-danger/10 flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">?</span>
+          </div>
+          <h2 className="font-semibold text-xl text-dark mb-2">
             Doctor no encontrado
           </h2>
           <p className="text-gray text-sm mb-4">
-            El link que usaste no es válido o el doctor ya no está disponible.
+            El link que usaste no es v\u00e1lido o el doctor ya no est\u00e1 disponible.
           </p>
           <Link
             to="/"
             className="text-primary font-semibold hover:underline text-sm"
           >
-            Ir a la página principal
+            Ir a la p\u00e1gina principal
           </Link>
         </div>
       </div>
@@ -112,22 +129,24 @@ export default function Booking() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-pale to-[#f0fffe]">
-      {/* OG Meta tags are handled in index.html for SSR/SSG -
-          for SPA we rely on the meta tags in index.html */}
-
+    <div className="min-h-screen bg-bg">
       <BookingHeader doctor={doctor} />
 
-      <div className="max-w-[540px] mx-auto -mt-6 px-5 pb-10 relative z-[2]">
+      <div className="max-w-lg mx-auto px-5 pt-6 pb-10">
         <BookingProgress currentStep={step} />
 
         {step === 1 && (
-          <ServiceStep services={services} onSelect={handleSelectService} />
+          <ServiceStep
+            services={services}
+            selectedService={selectedService}
+            onSelect={handleSelectService}
+          />
         )}
 
         {step === 2 && (
           <DateStep
             availableDates={availableDates}
+            selectedDate={selectedDate}
             onSelect={handleSelectDate}
             onBack={() => setStep(1)}
           />
@@ -137,6 +156,7 @@ export default function Booking() {
           <TimeStep
             timeSlots={timeSlots}
             selectedDate={selectedDate}
+            selectedTime={selectedTime}
             onSelect={handleSelectTime}
             onBack={() => setStep(2)}
           />
@@ -153,10 +173,9 @@ export default function Booking() {
           />
         )}
 
-        <p className="text-center text-xs text-gray mt-6 pb-10">
+        <p className="text-center text-xs text-muted mt-8">
           Powered by{" "}
-          <strong className="text-primary">{BRAND.name}</strong> · Sistema de
-          citas médicas
+          <strong className="text-primary">{BRAND.name}</strong>
         </p>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { BRAND } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import toast from "react-hot-toast";
-import { MailIcon } from "@/components/ui/Icons";
+import { MailIcon, CalendarIcon } from "@/components/ui/Icons";
 import PageTransition from "@/components/ui/PageTransition";
 
 export default function Login() {
@@ -50,13 +50,13 @@ export default function Login() {
   return (
     <PageTransition>
       <div className="min-h-screen bg-gradient-to-br from-primary-pale to-white flex items-center justify-center p-5">
-        <div className="bg-white rounded-[--radius-card] shadow-xl p-8 w-full max-w-md">
+        <div className="bg-white rounded-[--radius-card] shadow-lg border border-border p-8 w-full max-w-md">
           {/* Logo */}
           <div className="text-center mb-8">
-            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
-              🦷
+            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <CalendarIcon size={28} className="text-primary" />
             </div>
-            <h1 className="font-display text-2xl text-dark">{BRAND.name}</h1>
+            <h1 className="font-semibold text-2xl text-dark">{BRAND.name}</h1>
             <p className="text-gray text-sm mt-1">Inicia sesión en tu cuenta</p>
           </div>
 
@@ -65,7 +65,7 @@ export default function Login() {
               <div className="w-16 h-16 bg-success-light rounded-full flex items-center justify-center mx-auto mb-4">
                 <MailIcon size={32} color="#10B981" />
               </div>
-              <h3 className="font-display text-lg text-dark mb-2">
+              <h3 className="font-semibold text-lg text-dark mb-2">
                 Revisa tu email
               </h3>
               <p className="text-gray text-sm">

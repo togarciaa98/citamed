@@ -97,13 +97,13 @@ export default function NewAppointmentModal({
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-dark mb-1.5">
+          <label className="block text-sm font-medium text-dark mb-1.5">
             Servicio
           </label>
           <select
             value={form.serviceId}
             onChange={(e) => setForm({ ...form, serviceId: e.target.value })}
-            className="w-full px-4 py-3 rounded-[10px] border-2 border-gray-light text-sm outline-none focus:border-primary"
+            className="w-full px-4 py-2.5 rounded-[10px] border border-border text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
           >
             {services.map((s) => (
               <option key={s.id} value={s.id}>
@@ -113,7 +113,7 @@ export default function NewAppointmentModal({
           </select>
         </div>
         <div>
-          <label className="block text-xs font-semibold text-dark mb-1.5">
+          <label className="block text-sm font-medium text-dark mb-1.5">
             Notas (opcional)
           </label>
           <textarea
@@ -121,11 +121,11 @@ export default function NewAppointmentModal({
             onChange={(e) => setForm({ ...form, notes: e.target.value })}
             placeholder="Alergias, indicaciones especiales..."
             rows={2}
-            className="w-full px-4 py-3 rounded-[10px] border-2 border-gray-light text-sm outline-none focus:border-primary resize-vertical font-[inherit]"
+            className="w-full px-4 py-2.5 rounded-[10px] border border-border text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 resize-vertical font-[inherit] transition-all"
           />
         </div>
-        <div className="flex gap-3">
-          <Button type="button" variant="outline" onClick={onClose} className="flex-1">
+        <div className="flex gap-3 pt-2">
+          <Button type="button" variant="ghost" onClick={onClose} className="flex-1">
             Cancelar
           </Button>
           <Button type="submit" disabled={submitting} className="flex-1">

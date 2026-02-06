@@ -1,24 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0D6E6E;
-  --color-primary-light: #14919B;
-  --color-primary-pale: #E0F4F4;
-  --color-accent: #FF6B35;
-  --color-accent-light: #FFF0E8;
-  --color-dark: #1A2332;
-  --color-gray: #64748B;
-  --color-gray-light: #F1F5F9;
-  --color-success: #10B981;
-  --color-success-light: #D1FAE5;
-  --color-warning: #F59E0B;
-  --color-warning-light: #FEF3C7;
-  --color-danger: #EF4444;
+  /* Primary */
+  --color-primary: #0F766E;
+  --color-primary-light: #F0FDFA;
+  --color-primary-hover: #0D9488;
+  --color-primary-pale: #CCFBF1;
+
+  /* Accent */
+  --color-accent: #F97316;
+  --color-accent-light: #FFF7ED;
+  --color-accent-hover: #EA580C;
+
+  /* Neutrals */
+  --color-dark: #1C1917;
+  --color-gray: #78716C;
+  --color-gray-light: #F5F5F4;
+  --color-muted: #A8A29E;
+  --color-border: #E7E5E4;
+  --color-surface: #FFFFFF;
+  --color-bg: #FAFAF9;
+
+  /* Semantic */
+  --color-success: #16A34A;
+  --color-success-light: #DCFCE7;
+  --color-warning: #EAB308;
+  --color-warning-light: #FEF9C3;
+  --color-danger: #DC2626;
   --color-danger-light: #FEE2E2;
 
-  --font-display: "DM Serif Display", Georgia, serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
 
+  /* Radii */
   --radius-card: 16px;
   --radius-button: 12px;
 }
@@ -26,6 +40,8 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

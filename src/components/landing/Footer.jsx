@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className="bg-dark py-12 px-5">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-xl">🦷</span>
-            <span className="font-display text-lg text-white">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center text-sm">🦷</div>
+            <span className="font-semibold text-lg text-white">
               {BRAND.name}
             </span>
           </div>

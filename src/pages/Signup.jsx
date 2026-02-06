@@ -7,7 +7,7 @@ import { slugify } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Card from "@/components/ui/Card";
-import { CheckIcon, PlusIcon, TrashIcon } from "@/components/ui/Icons";
+import { CheckIcon, PlusIcon, TrashIcon, CalendarIcon } from "@/components/ui/Icons";
 import toast from "react-hot-toast";
 import PageTransition from "@/components/ui/PageTransition";
 
@@ -187,10 +187,10 @@ export default function Signup() {
         <div className="w-full max-w-lg">
           {/* Logo */}
           <div className="text-center mb-6">
-            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl">
-              🦷
+            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <CalendarIcon size={28} className="text-primary" />
             </div>
-            <h1 className="font-display text-2xl text-dark">{BRAND.name}</h1>
+            <h1 className="font-semibold text-2xl text-dark">{BRAND.name}</h1>
           </div>
 
           {/* Progress */}
@@ -210,7 +210,7 @@ export default function Signup() {
             {step === 1 && (
               <form onSubmit={handleStep1} className="flex flex-col gap-4">
                 <div className="mb-2">
-                  <h2 className="font-display text-xl text-dark">
+                  <h2 className="font-semibold text-xl text-dark">
                     Crea tu cuenta
                   </h2>
                   <p className="text-gray text-sm mt-1">
@@ -259,7 +259,7 @@ export default function Signup() {
             {step === 2 && (
               <form onSubmit={handleStep2} className="flex flex-col gap-4">
                 <div className="mb-2">
-                  <h2 className="font-display text-xl text-dark">
+                  <h2 className="font-semibold text-xl text-dark">
                     Tu consultorio
                   </h2>
                   <p className="text-gray text-sm mt-1">
@@ -298,7 +298,7 @@ export default function Signup() {
                   <label className="block text-xs font-semibold text-dark mb-1.5">
                     Tu link de citas
                   </label>
-                  <div className="flex items-center gap-0 border-2 border-gray-light rounded-[10px] overflow-hidden">
+                  <div className="flex items-center gap-0 border border-border rounded-[--radius-button] overflow-hidden">
                     <span className="bg-gray-light px-3 py-3 text-sm text-gray whitespace-nowrap">
                       citamed.com/citas/
                     </span>
@@ -334,7 +334,7 @@ export default function Signup() {
             {step === 3 && (
               <form onSubmit={handleStep3} className="flex flex-col gap-5">
                 <div className="mb-1">
-                  <h2 className="font-display text-xl text-dark">
+                  <h2 className="font-semibold text-xl text-dark">
                     Servicios y horarios
                   </h2>
                   <p className="text-gray text-sm mt-1">
@@ -357,7 +357,7 @@ export default function Signup() {
                               updateService(i, "name", e.target.value)
                             }
                             placeholder="Ej: Consulta General"
-                            className="w-full px-3 py-2 border-2 border-gray-light rounded-lg text-sm outline-none focus:border-primary"
+                            className="w-full px-3 py-2 border border-border rounded-[--radius-button] text-sm outline-none focus:border-primary"
                           />
                         </div>
                         <input
@@ -366,7 +366,7 @@ export default function Signup() {
                           onChange={(e) =>
                             updateService(i, "duration", Number(e.target.value))
                           }
-                          className="w-16 px-2 py-2 border-2 border-gray-light rounded-lg text-sm outline-none focus:border-primary text-center"
+                          className="w-16 px-2 py-2 border border-border rounded-[--radius-button] text-sm outline-none focus:border-primary text-center"
                           placeholder="min"
                         />
                         <input
@@ -375,7 +375,7 @@ export default function Signup() {
                           onChange={(e) =>
                             updateService(i, "price", Number(e.target.value))
                           }
-                          className="w-20 px-2 py-2 border-2 border-gray-light rounded-lg text-sm outline-none focus:border-primary text-center"
+                          className="w-20 px-2 py-2 border border-border rounded-[--radius-button] text-sm outline-none focus:border-primary text-center"
                           placeholder="$"
                         />
                         {services.length > 1 && (

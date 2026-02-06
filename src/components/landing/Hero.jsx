@@ -16,7 +16,7 @@ export default function Hero() {
             🦷
           </div>
           <div className="text-left">
-            <h1 className="font-display text-4xl text-white tracking-tight">
+            <h1 className="font-semibold text-4xl text-white tracking-tight">
               {BRAND.name}
             </h1>
             <p className="text-[13px] text-white/50 tracking-widest uppercase">
@@ -26,7 +26,7 @@ export default function Hero() {
         </div>
 
         {/* Value prop */}
-        <h2 className="font-display text-4xl sm:text-5xl text-white mb-4 leading-tight tracking-tight">
+        <h2 className="font-semibold text-4xl sm:text-5xl text-white mb-4 leading-tight tracking-tight">
           Tu consultorio merece
           <br />
           <span className="text-accent">una agenda inteligente</span>

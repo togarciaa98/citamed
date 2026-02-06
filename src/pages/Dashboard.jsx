@@ -6,11 +6,15 @@ import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import StatsCards from "@/components/dashboard/StatsCards";
 import DashboardTabs from "@/components/dashboard/DashboardTabs";
 import AppointmentList from "@/components/dashboard/AppointmentList";
+import TimelineView from "@/components/dashboard/TimelineView";
 import NewAppointmentModal from "@/components/dashboard/NewAppointmentModal";
 import Button from "@/components/ui/Button";
-import { PlusIcon } from "@/components/ui/Icons";
+import { PlusIcon, ListIcon, GridIcon } from "@/components/ui/Icons";
+import { SkeletonCard } from "@/components/ui/Skeleton";
 import PageTransition from "@/components/ui/PageTransition";
 import toast from "react-hot-toast";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 
 export default function Dashboard() {
   const { doctor } = useAuth();
@@ -26,6 +30,7 @@ export default function Dashboard() {
   const { services } = useServices();
 
   const [activeTab, setActiveTab] = useState("today");
+  const [viewMode, setViewMode] = useState("list"); // list | timeline
   const [showNewAppt, setShowNewAppt] = useState(false);
 
   const handleUpdateStatus = async (id, status) => {
@@ -51,17 +56,18 @@ export default function Dashboard() {
     all: "No hay citas registradas",
   };
 
+  const todayFormatted = format(new Date(), "EEEE d 'de' MMMM", { locale: es });
+
   return (
     <DashboardLayout>
       <PageTransition>
+        {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="font-display text-xl sm:text-2xl text-dark">
-              Bienvenido, {doctor?.name?.split(" ").slice(0, 2).join(" ") || "Doctor"}
+            <h2 className="text-xl sm:text-2xl font-bold text-dark">
+              Hola, {doctor?.name?.split(" ")[0] || "Doctor"}
             </h2>
-            <p className="text-sm text-gray">
-              {doctor?.clinic_name || "Tu consultorio"}
-            </p>
+            <p className="text-sm text-muted capitalize">{todayFormatted}</p>
           </div>
           <Button onClick={() => setShowNewAppt(true)}>
             <PlusIcon size={16} /> <span className="hidden sm:inline">Nueva Cita</span>
@@ -70,19 +76,50 @@ export default function Dashboard() {
 
         <StatsCards stats={stats} />
 
-        <DashboardTabs
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          todayCount={todayAppointments.length}
-          upcomingCount={upcomingAppointments.length}
-          allCount={appointments.length}
-        />
+        {/* Tabs + View toggle */}
+        <div className="flex items-center justify-between mb-1">
+          <DashboardTabs
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            todayCount={todayAppointments.length}
+            upcomingCount={upcomingAppointments.length}
+            allCount={appointments.length}
+          />
+          <div className="hidden sm:flex items-center gap-1 bg-gray-light rounded-lg p-1">
+            <button
+              onClick={() => setViewMode("list")}
+              className={`p-1.5 rounded-md transition-colors cursor-pointer ${
+                viewMode === "list"
+                  ? "bg-white text-dark shadow-sm"
+                  : "text-muted hover:text-dark"
+              }`}
+            >
+              <ListIcon size={16} />
+            </button>
+            <button
+              onClick={() => setViewMode("timeline")}
+              className={`p-1.5 rounded-md transition-colors cursor-pointer ${
+                viewMode === "timeline"
+                  ? "bg-white text-dark shadow-sm"
+                  : "text-muted hover:text-dark"
+              }`}
+            >
+              <GridIcon size={16} />
+            </button>
+          </div>
+        </div>
 
         {loading ? (
-          <div className="text-center py-12">
-            <div className="w-8 h-8 border-3 border-primary/20 border-t-primary rounded-full animate-spin mx-auto" />
-            <p className="text-gray text-sm mt-3">Cargando citas...</p>
+          <div className="flex flex-col gap-3">
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
           </div>
+        ) : viewMode === "timeline" && activeTab === "today" ? (
+          <TimelineView
+            appointments={todayAppointments}
+            onAddClick={() => setShowNewAppt(true)}
+          />
         ) : (
           <AppointmentList
             appointments={currentList}

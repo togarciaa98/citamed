@@ -1,38 +1,36 @@
 const steps = ["Servicio", "Fecha", "Hora", "Datos"];
 
 export default function BookingProgress({ currentStep }) {
-  return (
-    <div className="bg-white rounded-[--radius-card] p-4 shadow-sm flex justify-between mb-5">
-      {steps.map((label, i) => {
-        const stepNum = i + 1;
-        const isCompleted = currentStep > stepNum;
-        const isCurrent = currentStep === stepNum;
+  const progressPercent = (currentStep / steps.length) * 100;
 
-        return (
-          <div key={i} className="text-center flex-1">
-            <div
-              className={`w-7 h-7 rounded-full mx-auto mb-1 flex items-center justify-center text-[13px] font-bold transition-all ${
-                isCompleted
-                  ? "bg-success text-white"
-                  : isCurrent
-                  ? "bg-primary text-white"
-                  : "bg-gray-light text-gray"
-              }`}
-            >
-              {isCompleted ? "✓" : stepNum}
-            </div>
+  return (
+    <div className="mb-6">
+      {/* Progress bar */}
+      <div className="h-1.5 bg-border rounded-full overflow-hidden">
+        <div
+          className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
+          style={{ width: `${progressPercent}%` }}
+        />
+      </div>
+
+      {/* Labels */}
+      <div className="flex justify-between mt-2.5">
+        {steps.map((label, i) => {
+          const stepNum = i + 1;
+          const isActive = currentStep >= stepNum;
+
+          return (
             <span
-              className={`text-[11px] ${
-                isCurrent
-                  ? "text-primary font-semibold"
-                  : "text-gray font-normal"
+              key={label}
+              className={`text-xs font-medium transition-colors ${
+                isActive ? "text-primary" : "text-muted"
               }`}
             >
               {label}
             </span>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

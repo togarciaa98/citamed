@@ -8,17 +8,18 @@ export default forwardRef(function Input(
   return (
     <div>
       {label && (
-        <label className="block text-xs font-semibold text-dark mb-1.5">
+        <label className="block text-sm font-medium text-dark mb-1.5">
           {label}
         </label>
       )}
       <input
         ref={ref}
         className={cn(
-          "w-full px-4 py-3 rounded-[10px] border-2 border-gray-light",
-          "text-[15px] outline-none transition-colors duration-200",
-          "focus:border-primary placeholder:text-gray/50",
-          error ? "border-danger" : "",
+          "w-full px-4 py-2.5 rounded-[10px] border border-border",
+          "text-sm text-dark outline-none transition-all duration-200",
+          "focus:border-primary focus:ring-2 focus:ring-primary/10",
+          "placeholder:text-muted",
+          error ? "border-danger focus:border-danger focus:ring-danger/10" : "",
           className
         )}
         {...props}

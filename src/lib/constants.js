@@ -21,12 +21,12 @@ export const STATUS_CONFIG = {
   pending: {
     label: "Pendiente",
     bg: "bg-warning-light",
-    text: "text-warning",
+    text: "text-[#A16207]",
     dot: "bg-warning",
   },
   completed: {
     label: "Completada",
-    bg: "bg-primary-pale",
+    bg: "bg-primary-light",
     text: "text-primary",
     dot: "bg-primary",
   },

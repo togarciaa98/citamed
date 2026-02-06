@@ -10,7 +10,7 @@ export default function Pricing() {
     <section className="py-20 px-5 bg-white">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-display text-3xl sm:text-4xl text-dark mb-3">
+          <h2 className="font-semibold text-3xl sm:text-4xl text-dark mb-3">
             Planes simples, sin sorpresas
           </h2>
           <p className="text-gray text-lg">
@@ -26,10 +26,10 @@ export default function Pricing() {
             return (
               <div
                 key={key}
-                className={`rounded-[--radius-card] p-6 sm:p-8 border-2 relative ${
+                className={`rounded-[--radius-card] p-6 sm:p-8 border relative transition-all ${
                   isPopular
-                    ? "border-primary shadow-lg shadow-primary/10 bg-white"
-                    : "border-gray-light bg-white"
+                    ? "border-primary border-2 shadow-lg shadow-primary/10 bg-white"
+                    : "border-border bg-white hover:border-primary/30 hover:shadow-md"
                 }`}
               >
                 {isPopular && (
@@ -37,7 +37,7 @@ export default function Pricing() {
                     Más popular
                   </div>
                 )}
-                <h3 className="font-display text-xl text-dark mb-1">
+                <h3 className="font-semibold text-xl text-dark mb-1">
                   {plan.name}
                 </h3>
                 <div className="mb-5">

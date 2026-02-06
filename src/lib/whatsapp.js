@@ -1,6 +1,15 @@
 export const getWhatsAppLink = (phone, message) =>
   `https://wa.me/52${phone}?text=${encodeURIComponent(message)}`;
 
+export function getCustomTemplate(key, defaults) {
+  try {
+    const stored = JSON.parse(localStorage.getItem("citamed_whatsapp_templates") || "{}");
+    return stored[key] || defaults[key];
+  } catch {
+    return defaults[key];
+  }
+}
+
 export const templates = {
   bookingConfirmation: ({ patientName, serviceName, dateFormatted, time, clinicName }) =>
     `Hola ${patientName}, tu cita para ${serviceName} el ${dateFormatted} a las ${time} en ${clinicName} ha sido confirmada. ¡Te esperamos!`,
