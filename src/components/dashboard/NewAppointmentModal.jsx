@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -19,6 +19,12 @@ export default function NewAppointmentModal({
     notes: "",
   });
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (services.length > 0 && !form.serviceId) {
+      setForm(prev => ({ ...prev, serviceId: services[0].id }));
+    }
+  }, [services]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

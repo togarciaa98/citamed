@@ -55,6 +55,18 @@ export const PLANS = {
       "WhatsApp manual",
       "Panel básico",
     ],
+    included: [
+      "Hasta 30 citas/mes",
+      "Link de reserva público",
+      "Panel básico de citas",
+      "QR para consultorio",
+    ],
+    excluded: [
+      "Recordatorios automáticos",
+      "Directorio de pacientes",
+      "Reportes y estadísticas",
+      "Soporte prioritario",
+    ],
   },
   basic: {
     name: "Básico",
@@ -66,6 +78,18 @@ export const PLANS = {
       "WhatsApp manual",
       "Panel completo",
       "Directorio de pacientes",
+    ],
+    included: [
+      "Hasta 200 citas/mes",
+      "Link de reserva público",
+      "Panel completo de citas",
+      "QR para consultorio",
+      "Recordatorios por WhatsApp",
+      "Directorio de pacientes",
+    ],
+    excluded: [
+      "Reportes y estadísticas",
+      "Soporte prioritario",
     ],
   },
   pro: {
@@ -80,6 +104,17 @@ export const PLANS = {
       "Directorio de pacientes",
       "Reportes y estadísticas",
     ],
+    included: [
+      "Citas ilimitadas",
+      "Link de reserva público",
+      "Panel completo de citas",
+      "QR para consultorio",
+      "Recordatorios automáticos",
+      "Directorio de pacientes",
+      "Reportes y estadísticas",
+      "Soporte prioritario",
+    ],
+    excluded: [],
   },
 };
 
